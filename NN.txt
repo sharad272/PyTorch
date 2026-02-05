@@ -1,0 +1,133 @@
+| Task                       | Output Neurons | Activation    |
+| -------------------------- | -------------- | ------------- |
+| Binary classification      | 1              | Sigmoid       |
+| Multi-class classification | #classes       | Softmax       |
+| Regression                 | 1              | None / Linear |
+
+
+
+What is the loss function?
+
+The loss function measures the difference between:
+
+predicted output 
+𝑦
+^
+y
+^
+	​
+
+
+actual output 
+𝑦
+y
+
+Example (Mean Squared Error):
+
+𝐿
+=
+(
+𝑦
+^
+−
+𝑦
+)
+2
+L=(
+y
+^
+	​
+
+−y)
+2
+
+So yes:
+
+Loss = how wrong the prediction is
+
+2️⃣ Why gradients?
+
+Because we want to minimize the loss.
+
+We compute:
+
+∂
+𝐿
+∂
+𝑊
+∂W
+∂L
+	​
+
+
+This tells us:
+
+how changing a weight affects the error
+
+which direction reduces the error
+
+3️⃣ What weight update is doing
+
+Gradient descent:
+
+𝑊
+←
+𝑊
+−
+𝜂
+∂
+𝐿
+∂
+𝑊
+W←W−η
+∂W
+∂L
+	​
+
+
+Meaning:
+
+if loss increases when 
+𝑊
+W increases → decrease 
+𝑊
+W
+
+if loss decreases when 
+𝑊
+W increases → increase 
+𝑊
+W
+
+4️⃣ What the whole training loop really is
+
+Input → network → predicted output 
+𝑦
+^
+y
+^
+	​
+
+
+Compare 
+𝑦
+^
+y
+^
+	​
+
+ with actual 
+𝑦
+y → compute loss
+
+Differentiate loss w.r.t. weights → gradients
+
+Update weights to reduce loss
+
+Repeat
+
+That’s all training is.
+
+5️⃣ One-line summary (very important)
+
+We compute gradients and update weights only to minimize the loss (prediction error).
