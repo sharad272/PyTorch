@@ -1,0 +1,24 @@
+Use mini batch gradient to load our dataset in batches while training the NN.
+
+We have 2 classes:
+1- DataSet Class --> To load the data
+2- DataLoader Class --> To make the batches of those data.
+
+Then these batches of data will be sent to the training.
+
+DataSet Class:
+Important constructor/methods:
+def __init__(): tells how data should be loaded
+def __len__(): returns the total no. of rows.
+def __getitem__(index) which returns the data (and label) at the given index
+
+
+DataLoader Class:
+
+1- It divides the indices into chunks of batch_size.
+2- For each index in the chunk, its respective data values are fetched from DataSet object using Sampler.
+3- The data values are then collected and combined into a batch (using collate func.)
+4- The batch is returned to the training loop.
+
+Sampler in dataloader class is resposible for put sequential/random put the indices of the data
+from Dataset class.
