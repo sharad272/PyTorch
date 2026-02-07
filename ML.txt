@@ -223,4 +223,41 @@ Failure handling strategies
 
 Scaling inference workloads
 
-Multi-tenant GenAI systems
+
+Multi-tenant GenAI systems.
+
+
+
+Optuna: An Open Source framework for hyperparameter tuning of the NN model.
+
+Optuna is an open-source hyperparameter optimization framework used mainly in machine learning and deep learning to automatically find the best hyperparameters for your models — faster and smarter than manual tuning or grid search.
+
+
+When you train ML/DL models, you constantly ask:
+
+What learning rate?
+
+How many layers?
+
+Batch size?
+
+Dropout?
+
+Regularization strength?
+
+Trying all combinations manually or with grid search is slow and wasteful.
+Optuna intelligently explores the search space and converges faster.
+
+
+
+You define an objective function (what to minimize/maximize, e.g. validation loss)
+
+Optuna suggests a set of hyperparameters
+
+Your model trains with those parameters
+
+Optuna observes the result
+
+It uses smart sampling to suggest better parameters next time
+
+Bad trials can be stopped early (pruning)
