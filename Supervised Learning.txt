@@ -1,0 +1,57 @@
+Supervised Learning --> Model will get trained on the Labelled Data
+
+Regression (Predicting values)
+Classification (Prediction Classes)
+
+Regression
+
+Linear Regression: Statistical model to predict the relationship between variables. Let's say X & Y where X is an independent variable and Y is dependent variable. Falls under Regression model
+y=mx+c
+
+Variables are continuous here (numeric)
+
+Ex: Prediction
+
+
+Logistic Regression: Here variables are categorical (0 or 1) Falls under classification model.
+Ex: Email is spam or not
+Ex: Given fruit is an apple or not. 
+
+It gives you values between 0 and 1 only.
+
+
+KNNs: K-nearest neighbor: Falls under classification 
+
+Euclidian's distance (Straight Line distance) = Distance between 2 points (P & Q) --> sqrt((p2-p1)^2 - (q2-q1)^2)
+
+Shorter the Euclidian's distance the better would be the result.
+
+
+
+Naive Bayes Classification: 
+Based on Bayes' theorem (Probability)
+ 
+
+
+
+Decision trees (Classification & Regression both but mainly Classification)
+(Nodes and Vertexes)
+
+Question: Should I play Cricket today?
+
+               Weather
+               |  |   
+            Sunny Cloudy
+              |       | 
+             Temp     Rain
+             |  |     |   |
+            Hot Cold  Yes  No
+            |     |    |    |
+            No    Yes  No   Yes
+
+Outcomes will come at the leaf nodes.
+
+
+
+ 
+        

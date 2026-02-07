@@ -1,0 +1,226 @@
+ML 
+Supervised (In-Depth)
+Training/Testing
+
+Inference
+
+Types of Prompt Engineering
+Zero-Shot
+Few-Shot
+
+Reranking (BERT/Cross encoder)
+Bi-Encoder finds → Cross-Encoder refines → LLM answers
+
+Failures of RAG
+- Inaccurate Response
+- No Response
+
+ANN/HNSW
+
+Architecture of Projects
+
+Types of Vector DB and its working!!
+Embedding!! (Cosine Similarity and Euclidian distance)
+
+AWS/Azure Working (Deploying of LLMs)
+
+Chunking: Data Split and its types
+
+Techniques to avoid hallucinations
+
+Evaluation metrics 
+
+https://www.uber.com/en-IN/blog/powering-billion-scale-vector-search-with-opensearch/
+
+
+
+Quantization/Distillation.
+
+
+
+
+
+
+Core GenAI Fundamentals
+
+Foundation models
+
+Generative vs discriminative models
+
+Tokens & tokenization
+
+Context window limitations
+
+Temperature, top-p, top-k
+
+Deterministic vs stochastic outputs
+
+Hallucinations & causes
+
+🧾 Prompting Concepts
+
+System vs user vs assistant prompts
+
+Zero-shot vs few-shot prompting
+
+Prompt templates
+
+Prompt versioning
+
+Instruction grounding
+
+Prompt injection attacks
+
+Prompt regression testing
+
+🔍 Embeddings & Semantic Search
+
+Text embeddings
+
+Vector representations
+
+Cosine similarity vs dot product vs Euclidean distance
+
+Semantic similarity vs keyword search
+
+Embedding dimensionality
+
+Embedding drift
+
+📚 RAG (Retrieval-Augmented Generation)
+
+RAG architecture
+
+Chunking strategies
+
+Chunk size vs overlap tradeoffs
+
+Metadata filtering
+
+Top-k retrieval
+
+Hybrid search (semantic + keyword)
+
+Context injection strategies
+
+Retrieval recall vs precision
+
+RAG failure modes
+
+🗂️ Vector Databases
+
+Indexing strategies
+
+Approximate vs exact nearest neighbors
+
+Index rebuild vs incremental updates
+
+Recall–latency tradeoff
+
+Vector + metadata queries
+
+☁️ Managed LLM Platforms (Conceptual)
+
+LLM-as-a-service
+
+Model selection tradeoffs
+
+Rate limiting & quotas
+
+Token-based pricing
+
+Latency vs cost tradeoffs
+
+Data privacy guarantees
+
+IAM-based access control
+
+⚙️ GenAI Application Architecture
+
+Sync vs async inference
+
+API-based inference services
+
+Retry & timeout strategies
+
+Request batching
+
+Response caching
+
+Streaming responses
+
+📊 Evaluation & Quality
+
+Faithfulness
+
+Groundedness
+
+Relevance
+
+Retrieval accuracy
+
+Human vs automated evaluation
+
+Golden dataset evaluation
+
+Prompt A/B testing
+
+📉 Monitoring & Observability
+
+Latency monitoring
+
+Token usage monitoring
+
+Error rates
+
+Retrieval failure detection
+
+Output quality degradation
+
+Cost monitoring
+
+🔐 Safety & Guardrails
+
+Prompt injection risks
+
+Jailbreak attempts
+
+Content moderation
+
+Output filtering
+
+Input sanitization
+
+🧪 Testing GenAI Systems
+
+Prompt regression tests
+
+RAG consistency testing
+
+Edge-case testing
+
+Failure logging
+
+⚖️ Performance & Cost Optimization
+
+Context length optimization
+
+Chunk reduction strategies
+
+Caching strategies
+
+Model size vs latency tradeoffs
+
+Cost vs accuracy tradeoffs
+
+🧠 GenAI System Design (Conceptual)
+
+When to use RAG vs fine-tuning
+
+When managed LLMs are preferred
+
+Failure handling strategies
+
+Scaling inference workloads
+
+Multi-tenant GenAI systems

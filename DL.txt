@@ -1,0 +1,5 @@
+| Task                       | Output Neurons | Activation    |
+| -------------------------- | -------------- | ------------- |
+| Binary classification      | 1              | Sigmoid       |
+| Multi-class classification | #classes       | Softmax       |
+| Regression                 | 1              | None / Linear |
