@@ -4,3 +4,6 @@ Trail   --> Objective function             Study
           -> Param init
           -> Training Loop
           -> Evaluation loop
+
+
+!pip install optuna
