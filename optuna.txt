@@ -1,5 +1,5 @@
-Trail --> Objective function             Study
-          -> Search Space                  |
+Trail   --> Objective function             Study
+|        -> Search Space                    |
           -> Model init                   Trail 
           -> Param init
           -> Training Loop
