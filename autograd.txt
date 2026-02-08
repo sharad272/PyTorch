@@ -130,4 +130,7 @@ So yes:
 Bias determines the neuron’s output when the input is zero.
 
 
-We don’t use sigmoid in hidden layers because its mathematical form forces the gradient toward zero when the input value becomes largely +ve  or -ve
+We don’t use sigmoid in hidden layers because its mathematical form forces the gradient toward zero when the input value becomes largely +ve  or -ve i.e. linear resprsentation which is a straight line only.
+
+
+While activation function like Relu can detect non-linear representation which covers much of the info or data points.
