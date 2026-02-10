@@ -4,3 +4,24 @@ CNN is a type of NN specifically designed to process and analyze such as (grid b
 They are particularly effective in tasks like image classification, image recognition & object detection.
 
 
+Architecture of CNn:
+Step 1- Feature Extraction using 2 operations
+     a) Convolution layer --> Convolutional operations as we want to extract                                 low-level features such as edges.
+     
+     b) Pooling layer   --> Reduction of image or tensor size.
+
+We flattens the tensor then proceed to Step 2
+
+Step 2- Classification using ANN.
+
+
+
+Convolution layers --> Pooling layers --> Flattens tensor (Conver it into 1 dimension) --> ANN --> Output layer
+
+Image (1,28,28)
+where 1 --> represents grayscale.
+28*28 is image size
+
+
+
+
