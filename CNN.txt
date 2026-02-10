@@ -1,0 +1,6 @@
+CNN is good with images and videoes rather than ANN.
+
+CNN is a type of NN specifically designed to process and analyze such as (grid based data) images or videos.
+They are particularly effective in tasks like image classification, image recognition & object detection.
+
+
