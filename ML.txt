@@ -43,6 +43,8 @@ Quantization/Distillation.
 
 Core GenAI Fundamentals
 
+Focus on Frameworks
+
 Foundation models
 
 Generative vs discriminative models
@@ -261,3 +263,8 @@ Optuna observes the result
 It uses smart sampling to suggest better parameters next time
 
 Bad trials can be stopped early (pruning)
+
+
+
+
+
