@@ -1,0 +1,6 @@
+Types of LLM
+1) Encoder only LLM 
+Ex: BERT
+
+2) Decoder only LLM
+Ex: GPT
