@@ -1,0 +1,76 @@
+echnical Assessment of Traversal Project
+=========================================
+1. Project Overview
+-------------------
+This project is an advanced AI-driven Technical Support Agent designed to automate troubleshooting for Dell products (specifically laptops). It utilizes a graph-based orchestration engine (LangGraph) to guide users through diagnostic workflows, identifying symptoms, verifying service tags, and providing solutions.
+The architecture is built on a Microservice/Agentic pattern:
+- **Frontend**: A lightweight web interface served via FastAPI/Jinja2 templates.
+- **Backend API**: FastAPI controls the chat endpoints (`/invoke`, `/stream_invoke`).
+- **Core Logic**: A LangGraph state machine (`agents.gfaGraph`) coordinates multiple specialized agents.
+- **Data/RAG**: A comprehensive RAG system backed by PostgreSQL (pgvector).
+2. RAG & Vector Database Connection
+-----------------------------------
+The Retrieval-Augmented Generation (RAG) component is designed to provide "contextual support" when specific guided flows are exhausted or not applicable.
+**Technical Stack:**
+- **Vector Database**: PostgreSQL with the `pgvector` extension.
+- **Connection**: Managed via `langchain_postgres.PGVector`.
+ - Credentials are loaded from constants (or hardcoded in some test files).
+ - A custom `initialize_vector_store` function handles conflict-free connection pooling.
+**RAG Implementation Details:**
+The RAG pipeline (`app.rag.gfa_rag.py`) follows a sophisticated "Query Decomposition & Reranking" pattern:
+1.  **Query Decomposition**:
+   - Incoming user queries are first analyzed by an LLM (OpenAI/Llama Vision model).
+   - The LLM breaks the complex query into 5-8 atomic "sub-queries" (e.g., "Root cause for [issue]", "Hardware diagnostic steps for [component]").
+   - Specialized decomposers exist for "Known Issues" and "Country Specific" policies.
+2.  **Reranking**:
+   - The generated sub-queries are reranked against the original query using a Cross-Encoder or Reranker Model (`RERANK_API_URL`).
+   - The top 5 related sub-queries are selected for retrieval.
+3.  **Retrieval**:
+   - A custom retriever `DSXPGVectorRetriever` executes batch similarity searches for the top sub-queries.
+   - **Metadata Filtering**: Searches are optimized using categorization (e.g., specific `article_type='Policy & Procedure'` or list of `article_id`s).
+4.  **Summarization**:
+   - Retrieved chunks ("General Dell Policies and Articles") are fed into a summarization LLM.
+   - Strict guidelines prevent the hallucination of diagnostic codes or sensitive sequences.
+**Integration Point**:
+- RAG is encapsulated as an MCP (Model Context Protocol) tool named `NBA_RAG`.
+- It is primarily invoked within the `symptom_extractor` agent when the conversation state is `DONE` or when purely symptom-based flows yield no results.
+3. The "Whole Flow" (Execution Graph)
+-------------------------------------
+The application logic is driven by a `StateGraph` defined in `app/agents/gfaGraph.py`. The flow is non-linear and state-dependent.
+**State Machine Stages:**
+1.  **Start & Query Analysis (`query_analyser`)**:
+   -   **Input**: User message.
+   -   **Action**: Checks for presence of `Service Tag` and `Issue Description`.
+   -   **Decision**:
+       -   If missing info: Asks clarifying questions (Loop).
+       -   If complete: Proceed to extraction.
+2.  **Symptom Extraction (`symptom_extractor`)**:
+   -   **Action**: Uses `NBA_SYMPTOM_EXTRACTOR` (MCP tool) to normalize the user's plain text issue into a standardized symptom.
+   -   **RAG Trigger**: If the guided flow is complete (`invokeType == "DONE"`), it calls the RAG system here to provide final context/articles.
+3.  **Flow Selection (`select_flow`)**:
+   -   **Action**: If multiple symptoms are detected (e.g., "No Power" AND "No Video"), it asks the user to prioritize one.
+   -   **Output**: Sets the `selected_symptom` state.
+4.  **Troubleshooting Check (`troubleshooting_agent`)**:
+   -   **Action**: Analyzes if the user has *already* performed standard troubleshooting steps (e.g., "I already tried a hard reset").
+   -   **Goal**: To avoid suggesting redundant steps.
+5.  **Input Consumer & Reasoning (`input_consumer` -> `reasoning_agent`)**:
+   -   **Action**:
+       -   Fetches exact asset details via `AERO_API` (using Service Tag).
+       -   Retrieves potential Direct Resolutions (DR) from the `NBA_DR` tool.
+   -   **Reasoning**: The `reasoning_agent` consolidates all data (Symptom + Asset + DR + User History) to decide the Next Best Action.
+6.  **Validation & Integration (`validator_agent` -> `boomi_flow`)**:
+   -   **Action**: Validates the proposed solution.
+   -   **Execution**: Triggers `boomi_flow` to execute backend processes (likely integration with external Dell support systems/Boomi middleware).
+7.  **Response Generation (`llm_engine_1` -> `llm_engine_2`)**:
+   -   **Action**: Formats the final response to the user, ensuring tone and clarity.
+   -   **Loop**: Can loop back to `boomi_flow` if the process requires multi-step execution.
+8.  **End**:
+   -   The cycle completes when a solution is provided or the user ends the session.
+4. Key Technologies
+-------------------
+- **LangGraph**: For stateful agent orchestration.
+- **FastAPI**: For high-performance async API endpoints.
+- **PGVector**: For scalable vector storage.
+- **OpenAI/Llama models**: For reasoning, vision, and summarization.
+- **Boomi**: For enterprise system integration.
+
