@@ -1,4 +1,4 @@
-echnical Assessment of Traversal Project
+Technical Assessment of Traversal Project
 =========================================
 1. Project Overview
 -------------------
@@ -73,4 +73,5 @@ The application logic is driven by a `StateGraph` defined in `app/agents/gfaGrap
 - **PGVector**: For scalable vector storage.
 - **OpenAI/Llama models**: For reasoning, vision, and summarization.
 - **Boomi**: For enterprise system integration.
+
 
