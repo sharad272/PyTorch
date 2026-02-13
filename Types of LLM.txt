@@ -1,6 +1,8 @@
 Types of LLM
 1) Encoder only LLM 
 Ex: BERT
+Full explanation
 
 2) Decoder only LLM
 Ex: GPT
+Full explanation
