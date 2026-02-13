@@ -74,3 +74,20 @@ The application logic is driven by a `StateGraph` defined in `app/agents/gfaGrap
 - **OpenAI/Llama models**: For reasoning, vision, and summarization.
 - **Boomi**: For enterprise system integration.
 
+
+
+
+Traversal (NBA 3.0) is a graph-based agentic AI troubleshooting platform built for Dell laptop diagnostics.
+
+The system uses LangGraph to orchestrate multiple specialized agents across validation, symptom extraction, troubleshooting analysis, enterprise workflow execution, reasoning, and user-friendly summarization.
+
+The flow begins with input validation — ensuring service tag, issue description, and prior troubleshooting steps are captured.
+
+We then enrich context using enterprise APIs like AERO_API and SalesCat_API, retrieve direct resolutions via NBA_DR, and fall back to RAG when structured solutions are unavailable.
+
+Diagnostic workflows are dynamically executed through Boomi integration, with stateful question progression and token management.
+
+We implemented a two-layer LLM strategy — one engine performs factual option selection without inference, and another rewrites technical diagnostics into user-friendly language.
+
+The result is not just a chatbot, but a structured decision engine that combines reasoning, enterprise orchestration, and retrieval augmentation in a controlled, explainable manner.
+
